@@ -710,6 +710,15 @@
           }
         }
       },
+      "System.Data.DataSetExtensions/4.5.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.Data.DataSetExtensions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Data.DataSetExtensions.dll": {}
+        }
+      },
       "System.Diagnostics.DiagnosticSource/6.0.0": {
         "type": "package",
         "dependencies": {
@@ -2005,6 +2014,25 @@
         "version.txt"
       ]
     },
+    "System.Data.DataSetExtensions/4.5.0": {
+      "sha512": "221clPs1445HkTBZPL+K9sDBdJRB8UN8rgjO3ztB0CQ26z//fmJXtlsr6whGatscsKGBrhJl5bwJuKSA8mwFOw==",
+      "type": "package",
+      "path": "system.data.datasetextensions/4.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net45/_._",
+        "lib/netstandard2.0/System.Data.DataSetExtensions.dll",
+        "ref/net45/_._",
+        "ref/netstandard2.0/System.Data.DataSetExtensions.dll",
+        "system.data.datasetextensions.4.5.0.nupkg.sha512",
+        "system.data.datasetextensions.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Diagnostics.DiagnosticSource/6.0.0": {
       "sha512": "frQDfv0rl209cKm1lnwTgFPzNigy2EKk1BS3uAvHvlBVKe5cymGyHO+Sj+NLv5VF/AhHsqPIUUwya5oV4CHMUw==",
       "type": "package",
@@ -2450,23 +2478,24 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.10",
       "Microsoft.AspNetCore.Identity.UI >= 6.0.10",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.10",
-      "Microsoft.EntityFrameworkCore.Tools >= 6.0.10"
+      "Microsoft.EntityFrameworkCore.Tools >= 6.0.10",
+      "System.Data.DataSetExtensions >= 4.5.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\brayd\\.nuget\\packages\\": {}
+    "C:\\Users\\raid_\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\MajorProject\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+      "projectUniqueName": "E:\\semester4\\440 QP Major Project\\musicBox\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
       "projectName": "MusicBoxProj",
-      "projectPath": "C:\\MajorProject\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
-      "packagesPath": "C:\\Users\\brayd\\.nuget\\packages\\",
-      "outputPath": "C:\\MajorProject\\MusicBoxProj\\MusicBoxProj\\obj\\",
+      "projectPath": "E:\\semester4\\440 QP Major Project\\musicBox\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+      "packagesPath": "C:\\Users\\raid_\\.nuget\\packages\\",
+      "outputPath": "E:\\semester4\\440 QP Major Project\\musicBox\\MusicBoxProj\\MusicBoxProj\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\brayd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\raid_\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2511,6 +2540,10 @@
           "Microsoft.EntityFrameworkCore.Tools": {
             "target": "Package",
             "version": "[6.0.10, )"
+          },
+          "System.Data.DataSetExtensions": {
+            "target": "Package",
+            "version": "[4.5.0, )"
           }
         },
         "imports": [
@@ -2532,7 +2565,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
