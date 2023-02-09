@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MajorProject\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {}
+    "E:\\semester4\\440 QP Major Project\\musicBox\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {}
   },
   "projects": {
-    "C:\\MajorProject\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {
+    "E:\\semester4\\440 QP Major Project\\musicBox\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MajorProject\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+        "projectUniqueName": "E:\\semester4\\440 QP Major Project\\musicBox\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
         "projectName": "MusicBoxProj",
-        "projectPath": "C:\\MajorProject\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
-        "packagesPath": "C:\\Users\\brayd\\.nuget\\packages\\",
-        "outputPath": "C:\\MajorProject\\MusicBoxProj\\MusicBoxProj\\obj\\",
+        "projectPath": "E:\\semester4\\440 QP Major Project\\musicBox\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+        "packagesPath": "C:\\Users\\raid_\\.nuget\\packages\\",
+        "outputPath": "E:\\semester4\\440 QP Major Project\\musicBox\\MusicBoxProj\\MusicBoxProj\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\brayd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\raid_\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -54,11 +54,21 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[6.0.10, )"
+              "version": "[6.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[6.0.10, )"
+              "version": "[6.0.13, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.11, )"
+            },
+            "System.Data.DataSetExtensions": {
+              "target": "Package",
+              "version": "[4.5.0, )"
             }
           },
           "imports": [
@@ -80,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
