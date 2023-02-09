@@ -34,9 +34,14 @@ namespace MusicBoxProj.Models
         public string SongName { get; set; } = string.Empty;
 
         public int AlbumId { get; set; }
-        public int BandId { get; set; }
-
+        public Album? Album { get; set; }  
+       
         public int PlayListId { get; set; }
+
+        public PlayList? PlayList { get; set; }
+        public int SongDuration { get; set; }   
+
+        public string SongFilePath { get; set; } = string.Empty;
     }
 
     public class Genre

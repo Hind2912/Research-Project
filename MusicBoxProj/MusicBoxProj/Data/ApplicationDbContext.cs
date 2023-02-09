@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using MusicBoxProj.Models;
+using System.Drawing;
 
 namespace MusicBoxProj.Data
 {
@@ -24,6 +25,7 @@ namespace MusicBoxProj.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<AlbumGenre>()
                 .HasKey(ag => new { ag.AlbumId, ag.GenreId });
             modelBuilder.Entity<AlbumGenre>()
@@ -34,6 +36,15 @@ namespace MusicBoxProj.Data
                 .HasOne(ag => ag.Genre)
                 .WithMany(g => g.ListOfAlbums)
                 .HasForeignKey(ag => ag.GenreId);
+
+
+           
+
+           
+
+
+
+
 
         }
 
