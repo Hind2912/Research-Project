@@ -19,7 +19,7 @@ namespace MusicBoxProj.Data
         public DbSet<MusicBoxProj.Models.Genre> Genres { get; set; }
 
         public DbSet<MusicBoxProj.Models.Song> Songs { get; set; }
-        public DbSet<MusicBoxProj.Models.PlayList> PlayLists { get; set; }
+       
 
         public DbSet<AlbumGenre> AlbumGenre { get; set; }
 
@@ -47,6 +47,8 @@ namespace MusicBoxProj.Data
 
 
         }
+
+        public DbSet<MusicBoxProj.Models.PlayList> PlayList { get; set; }
 
 
     }

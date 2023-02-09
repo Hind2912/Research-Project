@@ -12,14 +12,14 @@ using MusicBoxProj.Data;
 namespace MusicBoxProj.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230209173609_initial")]
+    [Migration("20230209181406_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "6.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -300,23 +300,6 @@ namespace MusicBoxProj.Migrations
                     b.ToTable("Genres");
                 });
 
-            modelBuilder.Entity("MusicBoxProj.Models.PlayList", b =>
-                {
-                    b.Property<int>("PlayListId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlayListId"), 1L, 1);
-
-                    b.Property<string>("PlayListName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("PlayListId");
-
-                    b.ToTable("PlayLists");
-                });
-
             modelBuilder.Entity("MusicBoxProj.Models.Song", b =>
                 {
                     b.Property<int>("SongId")
@@ -331,11 +314,8 @@ namespace MusicBoxProj.Migrations
                     b.Property<int?>("BandId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PlayListId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SongDuration")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("SongDuration")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("SongFilePath")
                         .IsRequired()
@@ -350,8 +330,6 @@ namespace MusicBoxProj.Migrations
                     b.HasIndex("AlbumId");
 
                     b.HasIndex("BandId");
-
-                    b.HasIndex("PlayListId");
 
                     b.ToTable("Songs");
                 });
@@ -449,15 +427,7 @@ namespace MusicBoxProj.Migrations
                         .WithMany("ListOfSongs")
                         .HasForeignKey("BandId");
 
-                    b.HasOne("MusicBoxProj.Models.PlayList", "PlayList")
-                        .WithMany("ListOfSongs")
-                        .HasForeignKey("PlayListId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Album");
-
-                    b.Navigation("PlayList");
                 });
 
             modelBuilder.Entity("MusicBoxProj.Models.Album", b =>
@@ -477,11 +447,6 @@ namespace MusicBoxProj.Migrations
             modelBuilder.Entity("MusicBoxProj.Models.Genre", b =>
                 {
                     b.Navigation("ListOfAlbums");
-                });
-
-            modelBuilder.Entity("MusicBoxProj.Models.PlayList", b =>
-                {
-                    b.Navigation("ListOfSongs");
                 });
 #pragma warning restore 612, 618
         }

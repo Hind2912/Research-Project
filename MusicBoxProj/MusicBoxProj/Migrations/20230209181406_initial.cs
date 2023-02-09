@@ -75,19 +75,6 @@ namespace MusicBoxProj.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PlayLists",
-                columns: table => new
-                {
-                    PlayListId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    PlayListName = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PlayLists", x => x.PlayListId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -246,8 +233,7 @@ namespace MusicBoxProj.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SongName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AlbumId = table.Column<int>(type: "int", nullable: false),
-                    PlayListId = table.Column<int>(type: "int", nullable: false),
-                    SongDuration = table.Column<int>(type: "int", nullable: false),
+                    SongDuration = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SongFilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BandId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -265,12 +251,6 @@ namespace MusicBoxProj.Migrations
                         column: x => x.BandId,
                         principalTable: "Bands",
                         principalColumn: "BandId");
-                    table.ForeignKey(
-                        name: "FK_Songs_PlayLists_PlayListId",
-                        column: x => x.PlayListId,
-                        principalTable: "PlayLists",
-                        principalColumn: "PlayListId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -331,11 +311,6 @@ namespace MusicBoxProj.Migrations
                 name: "IX_Songs_BandId",
                 table: "Songs",
                 column: "BandId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Songs_PlayListId",
-                table: "Songs",
-                column: "PlayListId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -372,9 +347,6 @@ namespace MusicBoxProj.Migrations
 
             migrationBuilder.DropTable(
                 name: "Albums");
-
-            migrationBuilder.DropTable(
-                name: "PlayLists");
 
             migrationBuilder.DropTable(
                 name: "Bands");

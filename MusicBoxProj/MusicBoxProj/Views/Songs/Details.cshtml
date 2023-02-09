@@ -1,0 +1,42 @@
+﻿@model MusicBoxProj.Models.Song
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Song</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SongName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SongName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Album)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Album.AlbumId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SongDuration)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SongDuration)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SongFilePath)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SongFilePath)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.SongId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
