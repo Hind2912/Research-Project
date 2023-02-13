@@ -19,6 +19,9 @@
                 @Html.DisplayNameFor(model => model.Album)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Band)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.SongDuration)
             </th>
             <th>
@@ -35,6 +38,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Album.AlbumId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Band.BandName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SongDuration)

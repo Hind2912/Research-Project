@@ -12,8 +12,8 @@ using MusicBoxProj.Data;
 namespace MusicBoxProj.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230209181406_initial")]
-    partial class initial
+    [Migration("20230213015501_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -300,6 +300,38 @@ namespace MusicBoxProj.Migrations
                     b.ToTable("Genres");
                 });
 
+            modelBuilder.Entity("MusicBoxProj.Models.PlayList", b =>
+                {
+                    b.Property<int>("PlayListId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PlayListId"), 1L, 1);
+
+                    b.Property<string>("PlayListName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PlayListId");
+
+                    b.ToTable("PlayList");
+                });
+
+            modelBuilder.Entity("MusicBoxProj.Models.PlayListSong", b =>
+                {
+                    b.Property<int>("SongId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PlayListId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SongId", "PlayListId");
+
+                    b.HasIndex("PlayListId");
+
+                    b.ToTable("PlayListSong");
+                });
+
             modelBuilder.Entity("MusicBoxProj.Models.Song", b =>
                 {
                     b.Property<int>("SongId")
@@ -415,6 +447,25 @@ namespace MusicBoxProj.Migrations
                     b.Navigation("Genre");
                 });
 
+            modelBuilder.Entity("MusicBoxProj.Models.PlayListSong", b =>
+                {
+                    b.HasOne("MusicBoxProj.Models.PlayList", "PlayList")
+                        .WithMany("ListOfSongs")
+                        .HasForeignKey("PlayListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MusicBoxProj.Models.Song", "Song")
+                        .WithMany("ListOfPlayLists")
+                        .HasForeignKey("SongId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("PlayList");
+
+                    b.Navigation("Song");
+                });
+
             modelBuilder.Entity("MusicBoxProj.Models.Song", b =>
                 {
                     b.HasOne("MusicBoxProj.Models.Album", "Album")
@@ -423,11 +474,13 @@ namespace MusicBoxProj.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MusicBoxProj.Models.Band", null)
+                    b.HasOne("MusicBoxProj.Models.Band", "Band")
                         .WithMany("ListOfSongs")
                         .HasForeignKey("BandId");
 
                     b.Navigation("Album");
+
+                    b.Navigation("Band");
                 });
 
             modelBuilder.Entity("MusicBoxProj.Models.Album", b =>
@@ -447,6 +500,16 @@ namespace MusicBoxProj.Migrations
             modelBuilder.Entity("MusicBoxProj.Models.Genre", b =>
                 {
                     b.Navigation("ListOfAlbums");
+                });
+
+            modelBuilder.Entity("MusicBoxProj.Models.PlayList", b =>
+                {
+                    b.Navigation("ListOfSongs");
+                });
+
+            modelBuilder.Entity("MusicBoxProj.Models.Song", b =>
+                {
+                    b.Navigation("ListOfPlayLists");
                 });
 #pragma warning restore 612, 618
         }

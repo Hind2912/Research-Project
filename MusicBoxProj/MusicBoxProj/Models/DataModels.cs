@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace MusicBoxProj.Models
 {
@@ -7,6 +8,7 @@ namespace MusicBoxProj.Models
         public int AlbumId { get; set; }
         public string AlbumName { get; set; } = string.Empty;
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:0/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime ReleaseDate { get; set; }
 
         public int BandId { get; set; }
@@ -36,10 +38,15 @@ namespace MusicBoxProj.Models
         public int AlbumId { get; set; }
         public Album? Album { get; set; }
 
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{hh:mm}")]
+        public int? BandId { get; set; }
+        public Band? Band { get; set; }
+        [BindProperty, DataType(DataType.Time)]
         public DateTime SongDuration { get; set; }   
 
         public string SongFilePath { get; set; } = string.Empty;
+
+        public List<PlayListSong>? ListOfPlayLists { get; set; }
+
     }
 
     public class Genre
@@ -68,6 +75,16 @@ namespace MusicBoxProj.Models
         public int PlayListId { get; set; }
         [Required]
         public string PlayListName { get; set; } = string.Empty;
-        public List<Song>? ListOfSongs { get; set; }
+        public List<PlayListSong>? ListOfSongs { get; set; }
+        
+    }
+
+    public class PlayListSong
+    {
+        public int PlayListId { get; set; }
+        public PlayList? PlayList { get; set; }
+        public int SongId { get; set; }
+        public Song? Song { get; set; }
+
     }
 }

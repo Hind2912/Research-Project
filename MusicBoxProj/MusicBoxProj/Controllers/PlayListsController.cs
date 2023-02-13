@@ -22,18 +22,18 @@ namespace MusicBoxProj.Controllers
         // GET: PlayLists
         public async Task<IActionResult> Index()
         {
-              return View(await _context.PlayList.ToListAsync());
+              return View(await _context.playLists.ToListAsync());
         }
 
         // GET: PlayLists/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.PlayList == null)
+            if (id == null || _context.playLists == null)
             {
                 return NotFound();
             }
 
-            var playList = await _context.PlayList
+            var playList = await _context.playLists
                 .FirstOrDefaultAsync(m => m.PlayListId == id);
             if (playList == null)
             {
@@ -68,12 +68,12 @@ namespace MusicBoxProj.Controllers
         // GET: PlayLists/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.PlayList == null)
+            if (id == null || _context.playLists == null)
             {
                 return NotFound();
             }
 
-            var playList = await _context.PlayList.FindAsync(id);
+            var playList = await _context.playLists.FindAsync(id);
             if (playList == null)
             {
                 return NotFound();
@@ -119,12 +119,12 @@ namespace MusicBoxProj.Controllers
         // GET: PlayLists/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.PlayList == null)
+            if (id == null || _context.playLists == null)
             {
                 return NotFound();
             }
 
-            var playList = await _context.PlayList
+            var playList = await _context.playLists
                 .FirstOrDefaultAsync(m => m.PlayListId == id);
             if (playList == null)
             {
@@ -139,14 +139,14 @@ namespace MusicBoxProj.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.PlayList == null)
+            if (_context.playLists == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.PlayList'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.playLists'  is null.");
             }
-            var playList = await _context.PlayList.FindAsync(id);
+            var playList = await _context.playLists.FindAsync(id);
             if (playList != null)
             {
-                _context.PlayList.Remove(playList);
+                _context.playLists.Remove(playList);
             }
             
             await _context.SaveChangesAsync();
@@ -155,7 +155,7 @@ namespace MusicBoxProj.Controllers
 
         private bool PlayListExists(int id)
         {
-          return _context.PlayList.Any(e => e.PlayListId == id);
+          return _context.playLists.Any(e => e.PlayListId == id);
         }
     }
 }

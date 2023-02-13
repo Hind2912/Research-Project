@@ -22,7 +22,7 @@ namespace MusicBoxProj.Controllers
         // GET: Songs
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Songs.Include(s => s.Album);
+            var applicationDbContext = _context.Songs.Include(s => s.Album).Include(s => s.Band);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,6 +36,7 @@ namespace MusicBoxProj.Controllers
 
             var song = await _context.Songs
                 .Include(s => s.Album)
+                .Include(s => s.Band)
                 .FirstOrDefaultAsync(m => m.SongId == id);
             if (song == null)
             {
@@ -49,6 +50,7 @@ namespace MusicBoxProj.Controllers
         public IActionResult Create()
         {
             ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumId");
+            ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName");
             return View();
         }
 
@@ -57,7 +59,7 @@ namespace MusicBoxProj.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SongId,SongName,AlbumId,SongDuration,SongFilePath")] Song song)
+        public async Task<IActionResult> Create([Bind("SongId,SongName,AlbumId,BandId,SongDuration,SongFilePath")] Song song)
         {
             if (ModelState.IsValid)
             {
@@ -66,6 +68,7 @@ namespace MusicBoxProj.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumId", song.AlbumId);
+            ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName", song.BandId);
             return View(song);
         }
 
@@ -83,6 +86,7 @@ namespace MusicBoxProj.Controllers
                 return NotFound();
             }
             ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumId", song.AlbumId);
+            ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName", song.BandId);
             return View(song);
         }
 
@@ -91,7 +95,7 @@ namespace MusicBoxProj.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SongId,SongName,AlbumId,SongDuration,SongFilePath")] Song song)
+        public async Task<IActionResult> Edit(int id, [Bind("SongId,SongName,AlbumId,BandId,SongDuration,SongFilePath")] Song song)
         {
             if (id != song.SongId)
             {
@@ -119,6 +123,7 @@ namespace MusicBoxProj.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumId", song.AlbumId);
+            ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName", song.BandId);
             return View(song);
         }
 
@@ -132,6 +137,7 @@ namespace MusicBoxProj.Controllers
 
             var song = await _context.Songs
                 .Include(s => s.Album)
+                .Include(s => s.Band)
                 .FirstOrDefaultAsync(m => m.SongId == id);
             if (song == null)
             {

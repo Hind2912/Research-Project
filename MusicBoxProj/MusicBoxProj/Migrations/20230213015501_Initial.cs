@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MusicBoxProj.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -72,6 +72,19 @@ namespace MusicBoxProj.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Genres", x => x.GenreId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PlayList",
+                columns: table => new
+                {
+                    PlayListId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PlayListName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlayList", x => x.PlayListId);
                 });
 
             migrationBuilder.CreateTable(
@@ -233,9 +246,9 @@ namespace MusicBoxProj.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SongName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AlbumId = table.Column<int>(type: "int", nullable: false),
+                    BandId = table.Column<int>(type: "int", nullable: true),
                     SongDuration = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    SongFilePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BandId = table.Column<int>(type: "int", nullable: true)
+                    SongFilePath = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -251,6 +264,30 @@ namespace MusicBoxProj.Migrations
                         column: x => x.BandId,
                         principalTable: "Bands",
                         principalColumn: "BandId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PlayListSong",
+                columns: table => new
+                {
+                    PlayListId = table.Column<int>(type: "int", nullable: false),
+                    SongId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlayListSong", x => new { x.SongId, x.PlayListId });
+                    table.ForeignKey(
+                        name: "FK_PlayListSong_PlayList_PlayListId",
+                        column: x => x.PlayListId,
+                        principalTable: "PlayList",
+                        principalColumn: "PlayListId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PlayListSong_Songs_SongId",
+                        column: x => x.SongId,
+                        principalTable: "Songs",
+                        principalColumn: "SongId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -303,6 +340,11 @@ namespace MusicBoxProj.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PlayListSong_PlayListId",
+                table: "PlayListSong",
+                column: "PlayListId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Songs_AlbumId",
                 table: "Songs",
                 column: "AlbumId");
@@ -334,7 +376,7 @@ namespace MusicBoxProj.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Songs");
+                name: "PlayListSong");
 
             migrationBuilder.DropTable(
                 name: "Genres");
@@ -344,6 +386,12 @@ namespace MusicBoxProj.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "PlayList");
+
+            migrationBuilder.DropTable(
+                name: "Songs");
 
             migrationBuilder.DropTable(
                 name: "Albums");

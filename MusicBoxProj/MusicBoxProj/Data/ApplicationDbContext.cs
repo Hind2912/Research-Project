@@ -19,7 +19,7 @@ namespace MusicBoxProj.Data
         public DbSet<MusicBoxProj.Models.Genre> Genres { get; set; }
 
         public DbSet<MusicBoxProj.Models.Song> Songs { get; set; }
-       
+        public DbSet<MusicBoxProj.Models.PlayList> playLists  { get; set; }
 
         public DbSet<AlbumGenre> AlbumGenre { get; set; }
 
@@ -37,10 +37,29 @@ namespace MusicBoxProj.Data
                 .WithMany(g => g.ListOfAlbums)
                 .HasForeignKey(ag => ag.GenreId);
 
+            //modelBuilder.Entity<Song>()
+            //    .HasOne(s => s.Band)
+            //    .WithMany(b => b.ListOfSongs)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
-           
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<PlayListSong>()
+                .HasKey(ps => new { ps.SongId, ps.PlayListId });
+            modelBuilder.Entity<PlayListSong>()
+                 .HasOne(ps => ps.Song)
+                .WithMany(s => s.ListOfPlayLists)
+                .HasForeignKey(ps => ps.SongId);
+            modelBuilder.Entity<PlayListSong>()
+                .HasOne(ps => ps.PlayList)
+                .WithMany(p => p.ListOfSongs)
+                .HasForeignKey(ps => ps.PlayListId);
 
-           
+
+
+
+
+
+
 
 
 
