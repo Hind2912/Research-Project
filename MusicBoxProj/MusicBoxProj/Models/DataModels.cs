@@ -8,7 +8,6 @@ namespace MusicBoxProj.Models
         public int AlbumId { get; set; }
         public string AlbumName { get; set; } = string.Empty;
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:0/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime ReleaseDate { get; set; }
 
         public int BandId { get; set; }
@@ -40,8 +39,8 @@ namespace MusicBoxProj.Models
 
         public int? BandId { get; set; }
         public Band? Band { get; set; }
-        [BindProperty, DataType(DataType.Time)]
-        public DateTime SongDuration { get; set; }   
+       
+        public string? SongDuration { get; set; }   
 
         public string SongFilePath { get; set; } = string.Empty;
 
