@@ -5,8 +5,12 @@ using System.Drawing;
 
 namespace MusicBoxProj.Data
 {
+
     public class ApplicationDbContext : IdentityDbContext
     {
+
+        public DbSet<UserActivity> UserActivities { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

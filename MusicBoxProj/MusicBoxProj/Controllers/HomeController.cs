@@ -17,6 +17,17 @@ namespace MusicBoxProj.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult New()
+        {
+            return View(new Band());
+        }
+
+        [HttpPost]
+        public IActionResult New(Band band)
+        {
+            return RedirectToAction(nameof(Index));
+        }
 
         public IActionResult Privacy()
         {
