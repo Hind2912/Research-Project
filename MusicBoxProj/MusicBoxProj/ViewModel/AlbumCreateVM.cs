@@ -9,6 +9,8 @@ namespace MusicBoxProj.ViewModel
         public int[]? GenresIds { get; set; }
         public int BandId { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
+
         [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; } = new DateTime();
 

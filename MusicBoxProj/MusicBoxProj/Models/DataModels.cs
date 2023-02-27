@@ -7,6 +7,8 @@ namespace MusicBoxProj.Models
     {
         public int AlbumId { get; set; }
         public string AlbumName { get; set; } = string.Empty;
+
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
 
