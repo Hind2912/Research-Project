@@ -1,4 +1,4 @@
-﻿@model MusicBoxProj.Models.Album
+﻿@model MusicBoxProj.ViewModel.AlbumDetailsVM
 
 @{
     ViewData["Title"] = "Details";
@@ -29,6 +29,23 @@
             @Html.DisplayFor(model => model.Band.BandName)
         </dd>
     </dl>
+    <h5>List of Genres: </h5>
+    <ul class="row">
+        @foreach (var g in Model.Genres)
+        {
+               <li>@g.GenreName</li> 
+        }
+
+    </ul>
+
+    <h5>List of Songs: </h5>
+    <ul class="row">
+        @foreach (var s in Model.Songs)
+        {
+            <li>@s.SongName</li>
+        }
+
+    </ul>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.AlbumId">Edit</a> |

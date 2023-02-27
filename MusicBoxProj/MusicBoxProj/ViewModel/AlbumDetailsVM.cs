@@ -6,10 +6,11 @@ namespace MusicBoxProj.ViewModel
     public class AlbumDetailsVM
     {
         public int AlbumId { get; set; }
-        public string AlbumTitle { get; set; } = string.Empty;
+        public string AlbumName { get; set; } = string.Empty;
         [DataType(DataType.Date)]
-        public DateTime ReleaseDate { get; set; } = new DateTime();
+        public DateTime ReleaseDate { get; set; }
 
+        public string SongName { get; set; } = string.Empty;
         public Band? Band { get; set; }
         public List<Genre>? Genres { get; set; }
         public List<Song> Songs { get; set; }

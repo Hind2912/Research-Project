@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MusicBoxProj.Data;
 using MusicBoxProj.Models;
+using MusicBoxProj.ViewModel;
 
 namespace MusicBoxProj.Controllers
 {
@@ -34,22 +35,45 @@ namespace MusicBoxProj.Controllers
                 return NotFound();
             }
 
-            var album = await _context.Albums
+            AlbumDetailsVM vm = new AlbumDetailsVM();
+            var Album = await _context.Albums
                 .Include(a => a.Band)
+                .Include(b => b.ListOfSongs)
+                .Include(a => a.ListOfGenres)
+                .ThenInclude(a => a.Genre)
                 .FirstOrDefaultAsync(m => m.AlbumId == id);
-            if (album == null)
+
+            if (Album == null)
             {
                 return NotFound();
             }
 
-            return View(album);
+            vm.AlbumId = Album.AlbumId;
+            vm.AlbumName = Album.AlbumName;
+            vm.ReleaseDate = Album.ReleaseDate;
+            vm.Band = Album.Band;
+            
+
+            foreach(var AlbumGenre in Album.ListOfGenres)
+            {
+                vm.Genres.Add(AlbumGenre.Genre);
+            }
+
+            foreach(var SongsList in Album.ListOfSongs )
+            {
+                vm.Songs.Add(SongsList);
+            }
+            return View(vm);
         }
 
         // GET: Albums/Create
         public IActionResult Create()
         {
-            ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName");
-            return View();
+            AlbumCreateVM vm = new AlbumCreateVM();
+            vm.BandSelectList = new SelectList(_context.Bands, "BandId", "BandName");
+            vm.GenreSelectList = new MultiSelectList(_context.Genres, "GenreId", "GenreName");
+            vm.SongSelectList = new MultiSelectList(_context.Songs, "SongId", "SongName");
+            return View(vm);
         }
 
         // POST: Albums/Create
@@ -57,16 +81,40 @@ namespace MusicBoxProj.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AlbumId,AlbumName,ReleaseDate,BandId")] Album album)
+        public async Task<IActionResult> Create (AlbumCreateVM vm)
         {
             if (ModelState.IsValid)
             {
+
+                Album album = new Album()
+                {
+                    ReleaseDate = vm.ReleaseDate,
+                    BandId = vm.BandId,
+                    AlbumName = vm.AlbumName
+                    
+                };
                 _context.Add(album);
                 await _context.SaveChangesAsync();
+
+                if (vm.GenresIds != null)
+                {
+                    List<AlbumGenre> albumGenres= new List<AlbumGenre>();
+
+                    foreach (int id in vm.GenresIds)
+                    {
+                        albumGenres.Add(new AlbumGenre() { AlbumId = album.AlbumId,GenreId = id });
+                    }
+
+
+                    _context.AlbumGenre.AddRange(albumGenres);
+                    await _context.SaveChangesAsync();
+                }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName", album.BandId);
-            return View(album);
+            vm.BandSelectList = new SelectList(_context.Bands, "BandId", "BandName");
+            vm.GenreSelectList = new MultiSelectList(_context.Genres, "GenreId", "GenreName");
+            vm.SongSelectList = new MultiSelectList(_context.Songs, "SongId", "SongName");
+            return View(vm);
         }
 
         // GET: Albums/Edit/5
@@ -77,13 +125,29 @@ namespace MusicBoxProj.Controllers
                 return NotFound();
             }
 
-            var album = await _context.Albums.FindAsync(id);
+            var album = await _context.Albums
+                .Include(b => b.ListOfGenres)
+                .Include(b => b.ListOfSongs)
+                .FirstOrDefaultAsync(b => b.AlbumId == id);
             if (album == null)
             {
                 return NotFound();
             }
-            ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName", album.BandId);
-            return View(album);
+
+            AlbumEditVM vm = new AlbumEditVM();
+            vm.AlbumId = album.AlbumId;
+            vm.AlbumName = album.AlbumName;
+            vm.BandId = album.BandId;
+            //vm.SongName = album.
+
+            if (album.ListOfGenres != null)
+            {
+                vm.GenreIds = album.ListOfGenres.Select(a => a.GenreId).ToArray();
+            }
+            vm.BandSelectList = new SelectList(_context.Bands, "BandId", "BandName");
+            vm.GenreSelectList = new MultiSelectList(_context.Genres, "GenreId", "GenreName");
+            vm.SongSelectList = new MultiSelectList(_context.Songs, "SongId", "SongName");
+            return View(vm);
         }
 
         // POST: Albums/Edit/5
@@ -91,19 +155,42 @@ namespace MusicBoxProj.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AlbumId,AlbumName,ReleaseDate,BandId")] Album album)
+        public async Task<IActionResult> Edit(int id, AlbumEditVM vm)
         {
-            if (id != album.AlbumId)
+            if (id != vm.AlbumId)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
+                Album album = new Album()
+                {
+                    AlbumId = vm.AlbumId,
+                    AlbumName = vm.AlbumName,
+                    BandId = vm.BandId,
+                    ReleaseDate = vm.ReleaseDate
+                };
                 try
                 {
                     _context.Update(album);
                     await _context.SaveChangesAsync();
+
+                    List<AlbumGenre> oldAlbumGenres = _context.AlbumGenre.Where(ag => ag.AlbumId == vm.AlbumId).ToList();
+
+                    _context.AlbumGenre.RemoveRange(oldAlbumGenres);
+
+                    if (vm.GenreIds != null)
+                    {
+                        List<AlbumGenre> newAlbumGenre = new List<AlbumGenre>();
+
+                        foreach (int gid in vm.GenreIds)
+                        {
+                            newAlbumGenre.Add(new AlbumGenre() { AlbumId = album.AlbumId, GenreId = gid });
+                        }
+                        _context.AlbumGenre.AddRange(newAlbumGenre);
+                        await _context.SaveChangesAsync();
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -118,8 +205,10 @@ namespace MusicBoxProj.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName", album.BandId);
-            return View(album);
+            vm.BandSelectList = new SelectList(_context.Bands, "BandId", "BandName");
+            vm.GenreSelectList = new MultiSelectList(_context.Genres, "GenreId", "GenreName");
+            vm.SongSelectList = new MultiSelectList(_context.Songs, "SongId", "SongName");
+            return View(vm);
         }
 
         // GET: Albums/Delete/5

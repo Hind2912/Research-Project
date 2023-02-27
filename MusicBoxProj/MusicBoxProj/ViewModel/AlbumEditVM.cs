@@ -7,9 +7,9 @@ namespace MusicBoxProj.ViewModel
     {
         public int AlbumId { get; set; }    
         public int BandId { get; set; }
-        public string AlbumTitle { get; set; } = string.Empty;
+        public string AlbumName { get; set; } = string.Empty;
         [DataType(DataType.Date)]
-        public DateTime RealeaseDate { get; set; } = new DateTime();
+        public DateTime ReleaseDate { get; set; }
 
         public SelectList? BandSelectList { get; set; }
 
@@ -17,7 +17,9 @@ namespace MusicBoxProj.ViewModel
 
         public MultiSelectList? GenreSelectList { get; set; }
 
-        public int[]? SongIds { get; set; } 
+        public int[]? SongIds { get; set; }
+
+        public string SongName { get; set; } = string.Empty;
 
         public MultiSelectList? SongSelectList { get; set; }
     }
