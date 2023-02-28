@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MusicBoxProj.Data;
 using MusicBoxProj.Models;
+using MusicBoxProj.ViewModel;
 
 namespace MusicBoxProj.Controllers
 {
@@ -20,10 +21,21 @@ namespace MusicBoxProj.Controllers
         }
 
         // GET: Songs
-        public async Task<IActionResult> Index()
+        
+        public async Task<IActionResult> Index( string searchString)
         {
-            var applicationDbContext = _context.Songs.Include(s => s.Album).Include(s => s.Band);
-            return View(await applicationDbContext.ToListAsync());
+            if (_context.Songs == null)
+            {
+                return NotFound();
+            }
+
+            var Songs = from s in _context.Songs select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                Songs = Songs.Where(ss => ss.SongName!.Contains(searchString) || ss.SongName.Contains(searchString));
+            }
+            //var applicationDbContext = _context.Songs.Include(s => s.Album).Include(s => s.Band);
+            return View(await Songs.ToListAsync());
         }
 
         // GET: Songs/Details/5
@@ -73,21 +85,29 @@ namespace MusicBoxProj.Controllers
         }
 
         // GET: Songs/Edit/5
+
+       
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Songs == null)
             {
                 return NotFound();
             }
-
+            
             var song = await _context.Songs.FindAsync(id);
             if (song == null)
             {
                 return NotFound();
             }
-            ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumId", song.AlbumId);
-            ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName", song.BandId);
-            return View(song);
+
+            SongEditVM vm = new SongEditVM();
+            vm.AlbumId = song.AlbumId;
+            vm.BandId = song.BandId;
+            
+
+           vm.AlbumSelectList = new SelectList(_context.Albums, "AlbumId", "AlbumName");
+            vm.BandSelectList= new SelectList(_context.Bands, "BandId", "BandName");
+            return View(vm);
         }
 
         // POST: Songs/Edit/5
@@ -104,6 +124,7 @@ namespace MusicBoxProj.Controllers
 
             if (ModelState.IsValid)
             {
+
                 try
                 {
                     _context.Update(song);

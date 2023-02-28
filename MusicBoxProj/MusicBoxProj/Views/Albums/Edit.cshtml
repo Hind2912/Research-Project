@@ -24,12 +24,12 @@
                 <span asp-validation-for="ReleaseDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BandId" class="control-label"></label>
-                <select asp-for="BandId" class="form-control" asp-items="ViewBag.BandId"></select>
+                <label asp-for="BandName" class="control-label"></label>
+                <select asp-for="BandId" class="form-control" asp-items="Model.BandSelectList"></select>
                 <span asp-validation-for="BandId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GenreIds" class="control-label"></label>
+                <label asp-for="GenreName" class="control-label"></label>
                 <select multiple asp-for="GenreIds" class="form-control" asp-items="Model.GenreSelectList"></select>
                 <span asp-validation-for="GenreIds" class="text-danger"></span>
             </div>

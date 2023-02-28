@@ -17,6 +17,8 @@ namespace MusicBoxProj.ViewModel
 
         public MultiSelectList? GenreSelectList { get; set; }
 
+        public string BandName { get; set; } = string.Empty;
+        public string GenreName { get; set; } = string.Empty;
         public int[]? SongIds { get; set; }
 
         public string SongName { get; set; } = string.Empty;

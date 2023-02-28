@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MusicBoxProj.Data;
 using MusicBoxProj.Models;
+using MusicBoxProj.ViewModel;
 
 namespace MusicBoxProj.Controllers
 {
@@ -32,15 +33,23 @@ namespace MusicBoxProj.Controllers
             {
                 return NotFound();
             }
-
+            PlayListDetailsVM vm = new PlayListDetailsVM();
             var playList = await _context.playLists
+                .Include(p => p.ListOfSongs)
                 .FirstOrDefaultAsync(m => m.PlayListId == id);
+            
             if (playList == null)
             {
                 return NotFound();
             }
-
-            return View(playList);
+            vm.PlayListId = playList.PlayListId;
+            vm.PlayListName = playList.PlayListName;
+            
+            foreach(var SongList in playList.ListOfSongs)
+            {
+                vm.SongSong.Add(SongList.Song);
+            }
+            return View(vm);
         }
 
         // GET: PlayLists/Create

@@ -9,6 +9,16 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<div>
+    <nav class="navbar bg-light">
+        <div class="container-fluid">
+            <form asp-controller="Songs" asp-action="Index" method="get">
+                Search by Name: <input type="text" name="searchString" />
+                <input type="submit" value="Filter" />
+            </form>
+        </div>
+    </nav>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -47,6 +57,11 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SongFilePath)
+                    <audio controls>
+                        <source src="horse.ogg" type="audio/ogg">
+                        <source src="horse.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.SongId">Edit</a> |
