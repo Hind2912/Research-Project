@@ -16,3 +16,14 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.light {
+    height: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.darkLight {
+    background-color: black;
+    color: brown;
+}

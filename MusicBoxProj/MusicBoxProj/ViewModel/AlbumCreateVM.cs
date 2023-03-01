@@ -10,10 +10,10 @@ namespace MusicBoxProj.ViewModel
         public int BandId { get; set; }
 
         public string SongName { get; set; } = string.Empty;
-
-        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
-
+        
+        [Required(ErrorMessage = "Please enter a Release Date")]
         [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime ReleaseDate { get; set; }
 
         public SelectList? BandSelectList { get; set; }
