@@ -61,7 +61,7 @@ namespace MusicBoxProj.Controllers
         // GET: Songs/Create
         public IActionResult Create()
         {
-            ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumId");
+            ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumName");
             ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName");
             return View();
         }
