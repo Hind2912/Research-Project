@@ -64,6 +64,9 @@ namespace MusicBoxProj.Controllers
             ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumName");
             ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName");
             return View();
+
+
+
         }
 
         // POST: Songs/Create
@@ -79,9 +82,17 @@ namespace MusicBoxProj.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumId", song.AlbumId);
-            ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName", song.BandId);
-            return View(song);
+            //ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumName");
+            //ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName");
+            //return View(song);
+            SongCreateVM vm = new SongCreateVM();
+            vm.AlbumId = song.AlbumId;
+            vm.BandId = song.BandId;
+
+
+            vm.AlbumSelectList = new SelectList(_context.Albums, "AlbumId", "AlbumName");
+            vm.BandSelectList = new SelectList(_context.Bands, "BandId", "BandName");
+            return View(vm);
         }
 
         // GET: Songs/Edit/5

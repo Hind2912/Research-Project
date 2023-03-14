@@ -57,9 +57,10 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SongFilePath)
+                   
                     <audio controls>
-                        <source src="horse.ogg" type="audio/ogg">
-                        <source src="horse.mp3" type="audio/mpeg">
+                        <source src="@item.SongFilePath" type="audio/mp3">
+                        <source src="@item.SongFilePath" type="audio/ogg">
                         Your browser does not support the audio element.
                     </audio>
             </td>

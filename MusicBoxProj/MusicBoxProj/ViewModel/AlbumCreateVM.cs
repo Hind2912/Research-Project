@@ -7,7 +7,9 @@ namespace MusicBoxProj.ViewModel
     {
         public string AlbumName { get; set; } = string.Empty;
         public int[]? GenresIds { get; set; }
+        public string GenreName { get; set; } = string.Empty;   
         public int BandId { get; set; }
+        public string BandName { get; set; }=string.Empty;  
 
         public string SongName { get; set; } = string.Empty;
         
