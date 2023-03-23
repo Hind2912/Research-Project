@@ -47,7 +47,6 @@ namespace MusicBoxProj.Controllers
             PlayListDetailsVM vm = new PlayListDetailsVM();
             var playList = await _context.playLists
                 .Include(p => p.ListOfSongs)
-              
                 .FirstOrDefaultAsync(m => m.PlayListId == id);
             
             if (playList == null)
@@ -56,12 +55,12 @@ namespace MusicBoxProj.Controllers
             }
             vm.PlayListId = playList.PlayListId;
             vm.PlayListName = playList.PlayListName;
-            vm.ListOfSongs = playList.ListOfSongs;
+           
 
-            
-            foreach(var SongList in playList.ListOfSongs)
+
+            foreach (var SongList in playList.ListOfSongs)
             {
-                vm.SongSong.Add(SongList.Song);
+                vm.Songs.Add(SongList.Song);
             }
             return View(vm);
         }
@@ -106,12 +105,19 @@ namespace MusicBoxProj.Controllers
                 return NotFound();
             }
 
-            var playList = await _context.playLists.FindAsync(id);
+            var playList = await _context.playLists
+                .Include(p => p.ListOfSongs)
+                .FirstOrDefaultAsync(p =>p.PlayListId ==id);
             if (playList == null)
             {
                 return NotFound();
             }
-            return View(playList);
+            PlayListEditVM vm = new PlayListEditVM();
+            vm.PlayListId = playList.PlayListId;
+            vm.PlayListName = playList.PlayListName;
+
+            vm.SongSelectList = new MultiSelectList(_context.Songs, "SongId", "SongName");
+            return View(vm);
         }
 
         // POST: PlayLists/Edit/5
@@ -119,23 +125,29 @@ namespace MusicBoxProj.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PlayListId,PlayListName")] PlayList playList)
+        public async Task<IActionResult> Edit(int id, PlayListEditVM vm)
         {
-            if (id != playList.PlayListId)
+            if (id != vm.PlayListId)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
+                PlayList pl = new PlayList()
+                {
+                    PlayListId = vm.PlayListId,
+                    PlayListName = vm.PlayListName,
+
+                };
                 try
                 {
-                    _context.Update(playList);
+                    _context.Update(pl);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!PlayListExists(playList.PlayListId))
+                    if (!PlayListExists(pl.PlayListId))
                     {
                         return NotFound();
                     }
@@ -146,7 +158,8 @@ namespace MusicBoxProj.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(playList);
+            vm.SongSelectList = new MultiSelectList(_context.Songs, "SongId", "SongName");
+            return View(vm);
         }
 
         // GET: PlayLists/Delete/5

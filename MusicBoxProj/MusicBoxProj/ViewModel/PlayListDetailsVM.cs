@@ -17,12 +17,12 @@ namespace MusicBoxProj.ViewModel
         public SelectList? SelectSongPath { get; set; }
         public string SongFilePath { get; set; } = string.Empty;
 
-        public List<Song>? SongSong { get; set; }
-        public SelectList? SelectListOfSongs { get; set; }
+        public List<Song> Songs { get; set; }
+       
 
         public PlayListDetailsVM()
         {
-            SongSong = new List<Song>();
+            Songs = new List<Song>();
         }
     }
 }

@@ -23,11 +23,13 @@
             @Html.DisplayFor(model => model.SongFilePath)
         </dd>
     </dl>
+    
     <h5>List of Songs: </h5>
+
     <ul class="row">
-        @foreach (var s in Model.SongSong)
+        @foreach (var s in Model.Songs)
         {
-                <li>@s.SongName</li>
+            <li>@s.SongName</li>
 
         }
 
