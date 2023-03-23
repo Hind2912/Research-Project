@@ -10493,11 +10493,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\semester4\\440 QP Major Project\\Proj\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+      "projectUniqueName": "E:\\semester4\\440 QP Major Project\\proj3-23\\Proj\\Proj\\Proj\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
       "projectName": "MusicBoxProj",
-      "projectPath": "E:\\semester4\\440 QP Major Project\\Proj\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+      "projectPath": "E:\\semester4\\440 QP Major Project\\proj3-23\\Proj\\Proj\\Proj\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
       "packagesPath": "C:\\Users\\raid_\\.nuget\\packages\\",
-      "outputPath": "E:\\semester4\\440 QP Major Project\\Proj\\MusicBoxProj\\MusicBoxProj\\obj\\",
+      "outputPath": "E:\\semester4\\440 QP Major Project\\proj3-23\\Proj\\Proj\\Proj\\MusicBoxProj\\MusicBoxProj\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\raid_\\AppData\\Roaming\\NuGet\\NuGet.Config",

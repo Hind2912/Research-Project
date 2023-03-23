@@ -21,9 +21,20 @@ namespace MusicBoxProj.Controllers
         }
 
         // GET: PlayLists
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-              return View(await _context.playLists.ToListAsync());
+            if (_context.PlayList == null)
+            {
+                return NotFound();
+            }
+
+            var pList = from p in _context.PlayList select p;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                pList = pList.Where(pl => pl.PlayListName!.Contains(searchString) || pl.PlayListName.Contains(searchString));
+            }
+
+            return View(await pList.ToListAsync());
         }
 
         // GET: PlayLists/Details/5
@@ -36,6 +47,7 @@ namespace MusicBoxProj.Controllers
             PlayListDetailsVM vm = new PlayListDetailsVM();
             var playList = await _context.playLists
                 .Include(p => p.ListOfSongs)
+              
                 .FirstOrDefaultAsync(m => m.PlayListId == id);
             
             if (playList == null)
@@ -44,6 +56,8 @@ namespace MusicBoxProj.Controllers
             }
             vm.PlayListId = playList.PlayListId;
             vm.PlayListName = playList.PlayListName;
+            vm.ListOfSongs = playList.ListOfSongs;
+
             
             foreach(var SongList in playList.ListOfSongs)
             {
@@ -55,7 +69,9 @@ namespace MusicBoxProj.Controllers
         // GET: PlayLists/Create
         public IActionResult Create()
         {
-            return View();
+            PlayListCreateVM vm = new PlayListCreateVM();
+            vm.SongSelectList = new MultiSelectList(_context.Songs, "SongId", "SongName");
+            return View(vm);
         }
 
         // POST: PlayLists/Create
@@ -63,15 +79,23 @@ namespace MusicBoxProj.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PlayListId,PlayListName")] PlayList playList)
+        public async Task<IActionResult> Create( PlayListCreateVM vm)
         {
             if (ModelState.IsValid)
             {
+                PlayList playList = new PlayList()
+                {
+                    PlayListName= vm.PlayListName,
+                    PlayListId= vm.PlayListId,
+                    ListOfSongs= vm.ListOfSongs,
+                    
+                };
                 _context.Add(playList);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(playList);
+            vm.SongSelectList = new MultiSelectList(_context.Songs, "SongId", "SongName");
+            return View(vm);
         }
 
         // GET: PlayLists/Edit/5

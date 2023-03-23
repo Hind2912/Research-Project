@@ -1,4 +1,4 @@
-﻿@model MusicBoxProj.Models.PlayList
+﻿@model MusicBoxProj.ViewModel.PlayListCreateVM
 
 @{
     ViewData["Title"] = "Create";
@@ -17,6 +17,15 @@
                 <input asp-for="PlayListName" class="form-control" />
                 <span asp-validation-for="PlayListName" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="ListOfSongs" class="control-label"></label>
+                <select asp-for="ListOfSongs" class="form-control" asp-items="Model.SongSelectList" multiple></select>
+            </div>
+           @* <div class="form-group">
+                <label asp-for="SongFilePath" class="control-label"></label>
+                <input asp-for="SongFilePath" class="form-control" />
+                <span asp-validation-for="SongFilePath" class="text-danger"></span>
+            </div>*@
             <div class="form-group mt-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

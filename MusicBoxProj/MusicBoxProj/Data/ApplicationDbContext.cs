@@ -41,11 +41,7 @@ namespace MusicBoxProj.Data
                 .WithMany(g => g.ListOfAlbums)
                 .HasForeignKey(ag => ag.GenreId);
 
-            //modelBuilder.Entity<Song>()
-            //    .HasOne(s => s.Band)
-            //    .WithMany(b => b.ListOfSongs)
-            //    .OnDelete(DeleteBehavior.Cascade);
-
+           
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<PlayListSong>()
                 .HasKey(ps => new { ps.SongId, ps.PlayListId });

@@ -21,12 +21,21 @@ namespace MusicBoxProj.Controllers
         }
 
         // GET: Albums
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            var applicationDbContext = _context.Albums.Include(a => a.Band);
-            return View(await applicationDbContext.ToListAsync());
-        }
+            if (_context.Albums == null)
+            {
+                return NotFound();
+            }
 
+            var album = from a in _context.Albums select a;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                album = album.Where(aa => aa.AlbumName!.Contains(searchString) || aa.AlbumName.Contains(searchString));
+            }
+
+            return View(await album.ToListAsync());
+        }
         // GET: Albums/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -72,7 +81,7 @@ namespace MusicBoxProj.Controllers
             AlbumCreateVM vm = new AlbumCreateVM();
             vm.BandSelectList = new SelectList(_context.Bands, "BandId", "BandName");
             vm.GenreSelectList = new MultiSelectList(_context.Genres, "GenreId", "GenreName");
-            vm.SongSelectList = new MultiSelectList(_context.Songs, "SongId", "SongName");
+           
             return View(vm);
         }
 
@@ -88,10 +97,10 @@ namespace MusicBoxProj.Controllers
 
                 Album album = new Album()
                 {
-                    ReleaseDate = vm.ReleaseDate,
                     BandId = vm.BandId,
-                    AlbumName = vm.AlbumName
-                    
+                    AlbumName = vm.AlbumName,
+                    ReleaseDate = vm.ReleaseDate,
+                  
                 };
                 _context.Add(album);
                 await _context.SaveChangesAsync();
@@ -113,7 +122,7 @@ namespace MusicBoxProj.Controllers
             }
             vm.BandSelectList = new SelectList(_context.Bands, "BandId", "BandName");
             vm.GenreSelectList = new MultiSelectList(_context.Genres, "GenreId", "GenreName");
-            vm.SongSelectList = new MultiSelectList(_context.Songs, "SongId", "SongName");
+          
             return View(vm);
         }
 
@@ -138,7 +147,8 @@ namespace MusicBoxProj.Controllers
             vm.AlbumId = album.AlbumId;
             vm.AlbumName = album.AlbumName;
             vm.BandId = album.BandId;
-            //vm.SongName = album.
+            vm.ReleaseDate=album.ReleaseDate;
+            
 
             if (album.ListOfGenres != null)
             {

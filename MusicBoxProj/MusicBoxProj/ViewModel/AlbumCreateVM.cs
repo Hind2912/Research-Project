@@ -9,8 +9,7 @@ namespace MusicBoxProj.ViewModel
         public int[]? GenresIds { get; set; }
         public string GenreName { get; set; } = string.Empty;   
         public int BandId { get; set; }
-        public string BandName { get; set; }=string.Empty;  
-
+       
         public string SongName { get; set; } = string.Empty;
         
         [Required(ErrorMessage = "Please enter a Release Date")]

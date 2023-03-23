@@ -82,64 +82,87 @@ namespace MusicBoxProj.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            //ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumName");
-            //ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName");
-            //return View(song);
-            SongCreateVM vm = new SongCreateVM();
-            vm.AlbumId = song.AlbumId;
-            vm.BandId = song.BandId;
+            ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumName");
+            ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName");
+            return View(song);
+            
 
-
-            vm.AlbumSelectList = new SelectList(_context.Albums, "AlbumId", "AlbumName");
-            vm.BandSelectList = new SelectList(_context.Bands, "BandId", "BandName");
-            return View(vm);
+           
         }
 
         // GET: Songs/Edit/5
 
-       
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Songs == null)
             {
                 return NotFound();
             }
-            
-            var song = await _context.Songs.FindAsync(id);
+
+          
+
+            var song = await _context.Songs
+                .Include(s=>s.ListOfPlayLists)
+                .FirstOrDefaultAsync(s => s.SongId == id);
             if (song == null)
             {
                 return NotFound();
             }
-
             SongEditVM vm = new SongEditVM();
+            vm.SongId = song.SongId;
+            vm.SongName = song.SongName;
             vm.AlbumId = song.AlbumId;
-            vm.BandId = song.BandId;
-            
+            vm.BandId= song.BandId;
+            vm.SongDuration= song.SongDuration;
+            vm.SongFilePath= song.SongFilePath;
 
-           vm.AlbumSelectList = new SelectList(_context.Albums, "AlbumId", "AlbumName");
-            vm.BandSelectList= new SelectList(_context.Bands, "BandId", "BandName");
+            if(song.ListOfPlayLists != null)
+            {
+                vm.PlayListIDs = song.ListOfPlayLists.Select(sg => sg.PlayListId).ToArray();
+            }
+           vm.AlbumSelectList  = new SelectList(_context.Albums, "AlbumId", "AlbumName");
+           vm.BandSelectList  = new SelectList(_context.Bands, "BandId", "BandName");
             return View(vm);
-        }
 
+
+            //ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumId", song.AlbumId);
+            //ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName", song.BandId);
+            //return View(song);
+        }
         // POST: Songs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SongId,SongName,AlbumId,BandId,SongDuration,SongFilePath")] Song song)
+        public async Task<IActionResult> Edit(int id,SongEditVM vm)
         {
-            if (id != song.SongId)
+            if (id != vm.SongId)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
+                Song song = new Song()
+                {
+                    SongId = vm.SongId,
+                    SongName = vm.SongName,
+                    AlbumId = vm.AlbumId,
+                    BandId = vm.BandId,
+                    SongDuration = vm.SongDuration,
+                    SongFilePath= vm.SongFilePath,
+
+
+            };
 
                 try
                 {
                     _context.Update(song);
                     await _context.SaveChangesAsync();
+                    
+                    
+
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -154,9 +177,16 @@ namespace MusicBoxProj.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumId", song.AlbumId);
-            ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName", song.BandId);
-            return View(song);
+            //ViewData["AlbumId"] = new SelectList(_context.Albums, "AlbumId", "AlbumId", song.AlbumId);
+            //ViewData["BandId"] = new SelectList(_context.Bands, "BandId", "BandName", song.BandId);
+            //return View(song);
+
+            vm.AlbumSelectList = new SelectList(_context.Albums, "AlbumId", "AlbumName");
+            vm.BandSelectList = new SelectList(_context.Bands, "BandId", "BandName");
+            return View(vm);
+
+
+
         }
 
         // GET: Songs/Delete/5

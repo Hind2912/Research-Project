@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EGQqPBLA2cQ+TvQXiiw99JCcxa2PXsEQzqgcprAMQTa6UjX2ElFmM4yUzVd0JdM2v4jmBlJpsauC5bz80ICh1Q==",
+  "dgSpecHash": "bDAaTaVL5733ZGf1TlZMCe8lmFamq0wOfKBoGIXJMTqqiDWZGGGIhzn4FLCRKvMBv6miI00Ti0y8P+/qr2H8yA==",
   "success": true,
-  "projectFilePath": "E:\\semester4\\440 QP Major Project\\Proj\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+  "projectFilePath": "E:\\semester4\\440 QP Major Project\\proj3-23\\Proj\\Proj\\Proj\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\raid_\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\raid_\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

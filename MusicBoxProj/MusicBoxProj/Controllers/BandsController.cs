@@ -20,11 +20,21 @@ namespace MusicBoxProj.Controllers
         }
 
         // GET: Bands
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-              return View(await _context.Bands.ToListAsync());
-        }
+            if (_context.Bands == null)
+            {
+                return NotFound();
+            }
 
+            var band = from b in _context.Bands select b;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                band = band.Where(bb => bb.BandName!.Contains(searchString) || bb.BandName.Contains(searchString));
+            }
+
+            return View(await band.ToListAsync());
+        }
         // GET: Bands/Details/5
         public async Task<IActionResult> Details(int? id)
         {

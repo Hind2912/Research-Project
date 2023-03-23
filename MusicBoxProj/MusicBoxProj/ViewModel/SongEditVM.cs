@@ -21,7 +21,7 @@ namespace MusicBoxProj.ViewModel
         public string? SongDuration { get; set; }
 
         public string SongFilePath { get; set; } = string.Empty;
-
+        public int[]? PlayListIDs { get; set; }
         public List<PlayListSong>? ListOfPlayLists { get; set; }
     }
 }

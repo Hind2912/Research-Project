@@ -20,11 +20,21 @@ namespace MusicBoxProj.Controllers
         }
 
         // GET: Genres
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-              return View(await _context.Genres.ToListAsync());
-        }
+            if (_context.Genres == null)
+            {
+                return NotFound();
+            }
 
+            var genre = from g in _context.Genres select g;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                genre = genre.Where(gg => gg.GenreName!.Contains(searchString) || gg.GenreName.Contains(searchString));
+            }
+           
+            return View(await genre.ToListAsync());
+        }
         // GET: Genres/Details/5
         public async Task<IActionResult> Details(int? id)
         {
