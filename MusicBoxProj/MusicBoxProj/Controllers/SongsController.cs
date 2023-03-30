@@ -1,10 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.CodeAnalysis.Differencing;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MusicBoxProj.Data;
 using MusicBoxProj.Models;
 using MusicBoxProj.ViewModel;
@@ -21,6 +26,7 @@ namespace MusicBoxProj.Controllers
         }
 
         // GET: Songs
+
         
         public async Task<IActionResult> Index( string searchString)
         {
@@ -35,6 +41,18 @@ namespace MusicBoxProj.Controllers
                 Songs = Songs.Where(ss => ss.SongName!.Contains(searchString) || ss.SongName.Contains(searchString));
             }
             //var applicationDbContext = _context.Songs.Include(s => s.Album).Include(s => s.Band);
+            const string input = "http://www.youtube.com/watch?v=bSiDLCf5u3s " +
+            "https://www.youtube.com/watch?v=bSiDLCf5u3s " +
+            "http://youtu.be/bSiDLCf5u3s " +
+            "www.youtube.com/watch?v=bSiDLCf5u3s " +
+            "youtu.be/bSiDLCf5u3s " +
+            "http://www.youtube.com/watch?feature=player_embedded&v=bSiDLCf5u3s " +
+            "www.youtube.com/watch?feature=player_embedded&v=bSiDLCf5u3s " +
+            "http://www.youtube.com/watch?v=_-QpUDvTdNY";
+            const string pattern = @"(?:https?:\/\/)?(?:www\.)?(?:(?:(?:youtube.com\/watch\?[^?]*v=|youtu.be\/)([\w\-]+))(?:[^\s?]+)?)";
+            const string replacement = "<iframe title='YouTube video player' width='480' height='390' src='http://www.youtube.com/embed/$1' frameborder='0' allowfullscreen='1'></iframe>";
+            var rgx = new Regex(pattern);
+
             return View(await Songs.ToListAsync());
         }
 

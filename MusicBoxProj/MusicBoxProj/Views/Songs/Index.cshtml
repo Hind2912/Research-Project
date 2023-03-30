@@ -1,4 +1,5 @@
-﻿@model IEnumerable<MusicBoxProj.Models.Song>
+﻿
+@model IEnumerable<MusicBoxProj.Models.Song>
 
 
 @{
@@ -6,6 +7,7 @@
 }
 
 <h1>Index</h1>
+
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -37,7 +39,16 @@
                     @Html.DisplayFor(modelItem => item.SongName)
                 </td>
                 <td>
-                    <iframe width="500" height="280" src=@item.SongFilePath frameborder="0" allowfullscreen></iframe>
+                    @{
+
+
+                        var ytUrl = item.SongFilePath;
+                        // replace:
+                        var ytedit = ytUrl.Replace("/watch?v=", "/embed/");
+                        <iframe width="500" height="280" src=@ytedit frameborder="0" allowfullscreen></iframe>
+
+                    }
+
 
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.SongId">Edit</a> |
