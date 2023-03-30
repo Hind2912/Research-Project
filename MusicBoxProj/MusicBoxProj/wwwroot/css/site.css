@@ -15,6 +15,7 @@ html {
 
 body {
   margin-bottom: 60px;
+  
 }
 
 .light {
@@ -24,6 +25,18 @@ body {
 }
 
 .darkLight {
-    background-color: black;
-    color: brown;
+    background-color:black;
+    color: white;
+   
 }
+
+.darkLight table {
+    background-color: black;
+    color: white;
+    color:white;
+}
+    .darkLight table td {
+        background-color: black;
+        color: white;
+        
+    }
