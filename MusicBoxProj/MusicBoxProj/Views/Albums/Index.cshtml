@@ -7,7 +7,7 @@
 <h1>Albums</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
 </p>
 <div>
     <nav class="navbar bg-light">
@@ -47,9 +47,9 @@
                 @Html.DisplayFor(modelItem => item.BandId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.AlbumId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.AlbumId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.AlbumId">Delete</a>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.AlbumId">Edit</a> |
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.AlbumId">Details</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.AlbumId">Delete</a>
             </td>
         </tr>
 }

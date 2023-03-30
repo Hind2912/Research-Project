@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\majaproja\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {}
+    "E:\\semester4\\440 QP Major Project\\week11\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {}
   },
   "projects": {
-    "C:\\majaproja\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {
+    "E:\\semester4\\440 QP Major Project\\week11\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\majaproja\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+        "projectUniqueName": "E:\\semester4\\440 QP Major Project\\week11\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
         "projectName": "MusicBoxProj",
-        "projectPath": "C:\\majaproja\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
-        "packagesPath": "C:\\Users\\brayd\\.nuget\\packages\\",
-        "outputPath": "C:\\majaproja\\Major-Project\\MusicBoxProj\\MusicBoxProj\\obj\\",
+        "projectPath": "E:\\semester4\\440 QP Major Project\\week11\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+        "packagesPath": "C:\\Users\\raid_\\.nuget\\packages\\",
+        "outputPath": "E:\\semester4\\440 QP Major Project\\week11\\MusicBoxProj\\MusicBoxProj\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\brayd\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\raid_\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -90,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -7,7 +7,7 @@
 <h1>Genres</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-success" asp-action="Create">Create New</a>
 </p>
 <div>
     <nav class="navbar bg-light">
@@ -35,9 +35,9 @@
                 @Html.DisplayFor(modelItem => item.GenreName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.GenreId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.GenreId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.GenreId">Delete</a>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.GenreId">Edit</a> |
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.GenreId">Details</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.GenreId">Delete</a>
             </td>
         </tr>
 }

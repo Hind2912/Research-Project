@@ -5,148 +5,149 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MusicBoxProj
 build_property.RootNamespace = MusicBoxProj
-build_property.ProjectDir = C:\majaproja\Major-Project\MusicBoxProj\MusicBoxProj\
+build_property.ProjectDir = E:\semester4\440 QP Major Project\week11\MusicBoxProj\MusicBoxProj\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\majaproja\Major-Project\MusicBoxProj\MusicBoxProj
+build_property.MSBuildProjectDirectory = E:\semester4\440 QP Major Project\week11\MusicBoxProj\MusicBoxProj
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Areas/Identity/Pages/_ViewStart.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Albums/Create.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Albums/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1zXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Albums/Delete.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Albums/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1zXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Albums/Details.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Albums/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1zXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Albums/Edit.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Albums/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1zXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Albums/Index.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Albums/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxidW1zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Bands/Create.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Bands/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZHNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Bands/Delete.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Bands/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Bands/Details.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Bands/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZHNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Bands/Edit.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Bands/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZHNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Bands/Index.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Bands/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFuZHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Genres/Create.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Genres/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Genres/Delete.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Genres/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Genres/Details.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Genres/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Genres/Edit.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Genres/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Genres/Index.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Genres/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2VucmVzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Home/Index.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Home/Privacy.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/PlayLists/Create.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/PlayLists/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheUxpc3RzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/PlayLists/Delete.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/PlayLists/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheUxpc3RzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/PlayLists/Details.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/PlayLists/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheUxpc3RzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/PlayLists/Edit.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/PlayLists/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheUxpc3RzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/PlayLists/Index.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/PlayLists/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheUxpc3RzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Shared/Error.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Shared/_LoginPartial.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Shared/_ValidationScriptsPartial.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Songs/Create.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Songs/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Songs/Delete.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Songs/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Songs/Details.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Songs/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Songs/Edit.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Songs/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Songs/Index.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Songs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU29uZ3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/_ViewImports.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/_ViewStart.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/majaproja/Major-Project/MusicBoxProj/MusicBoxProj/Views/Shared/_Layout.cshtml]
+[E:/semester4/440 QP Major Project/week11/MusicBoxProj/MusicBoxProj/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-p12w9aoyp7

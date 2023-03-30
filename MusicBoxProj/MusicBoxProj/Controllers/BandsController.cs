@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MusicBoxProj.Data;
 using MusicBoxProj.Models;
+using MusicBoxProj.ViewModel;
 
 namespace MusicBoxProj.Controllers
 {
@@ -43,14 +44,31 @@ namespace MusicBoxProj.Controllers
                 return NotFound();
             }
 
+            BandDetailsVM vm = new BandDetailsVM();
             var band = await _context.Bands
+                .Include(b => b.ListOfSongs)
+                .Include(b => b.ListOfAlbums)
                 .FirstOrDefaultAsync(m => m.BandId == id);
             if (band == null)
             {
                 return NotFound();
             }
 
-            return View(band);
+            vm.BandId= band.BandId;
+            vm.BandName = band.BandName;
+            
+            foreach(var SongList in band.ListOfSongs)
+            {
+                vm.Songs.Add(SongList);
+
+            }
+            foreach (var AlbumList in band.ListOfAlbums)
+            {
+                vm.Albums.Add(AlbumList);
+
+            }
+
+            return View(vm);
         }
 
         // GET: Bands/Create
