@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<MusicBoxProj.Models.Song>
+@using System.Text.RegularExpressions;
 
 
 @{
@@ -57,9 +58,19 @@
                 </td>
                 <td>
                     @{
+
                         var ytUrl = item.SongFilePath;
-                        var ytedit = ytUrl.Replace("/watch?v=", "/embed/");
-                        <iframe width="500" height="280" src=@ytedit frameborder="0" allowfullscreen></iframe>
+
+                        var regex = new Regex(@"(?:youtu\.be\/|youtube\.com\/(?:watch\?.*v=|embed\/))([\w-]+)");
+
+                        var match = regex.Match(ytUrl);
+
+                        var videoId = match.Groups[1].Value;
+
+                        var ytedit = $"https://www.youtube.com/embed/{videoId}";
+                        <iframe width="500" height="280" src="@ytedit" frameborder="0" allowfullscreen></iframe>
+
+
                     }
                 <td>
                     <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.SongId">Edit</a> |

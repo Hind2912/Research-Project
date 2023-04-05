@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<MusicBoxProj.Models.Album>
+@using System.Text.RegularExpressions;
 
 @{
     ViewData["Title"] = "Index";
@@ -55,7 +56,10 @@
                     {
                         var firstSong = item.ListOfSongs.First();
                         var ytUrl = firstSong.SongFilePath;
-                        var ytedit = ytUrl.Replace("/watch?v=", "/embed/");
+                        var regex = new Regex(@"(?:youtu\.be\/|youtube\.com\/(?:watch\?.*v=|embed\/))([\w-]+)");
+                        var match = regex.Match(ytUrl);
+                        var videoId = match.Groups[1].Value;
+                        var ytedit = $"https://www.youtube.com/embed/{videoId}";
 
                         <iframe width="200" height="100" src=@ytedit frameborder="0" allowfullscreen></iframe>
                     }
