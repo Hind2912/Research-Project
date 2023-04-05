@@ -54,17 +54,6 @@ namespace MusicBoxProj.Data
                 .WithMany(p => p.ListOfSongs)
                 .HasForeignKey(ps => ps.PlayListId);
 
-
-
-
-
-
-
-
-
-
-
-
         }
 
         public DbSet<MusicBoxProj.Models.PlayList> PlayList { get; set; }

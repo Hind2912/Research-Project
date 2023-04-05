@@ -10488,19 +10488,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\raid_\\.nuget\\packages\\": {}
+    "C:\\Users\\hinda\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\semester4\\440 QP Major Project\\week11last\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+      "projectUniqueName": "D:\\Semester 4\\CP 440 Major Project\\March 30-2023\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
       "projectName": "MusicBoxProj",
-      "projectPath": "E:\\semester4\\440 QP Major Project\\week11last\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
-      "packagesPath": "C:\\Users\\raid_\\.nuget\\packages\\",
-      "outputPath": "E:\\semester4\\440 QP Major Project\\week11last\\MusicBoxProj\\MusicBoxProj\\obj\\",
+      "projectPath": "D:\\Semester 4\\CP 440 Major Project\\March 30-2023\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+      "packagesPath": "C:\\Users\\hinda\\.nuget\\packages\\",
+      "outputPath": "D:\\Semester 4\\CP 440 Major Project\\March 30-2023\\Major-Project\\MusicBoxProj\\MusicBoxProj\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\raid_\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\hinda\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

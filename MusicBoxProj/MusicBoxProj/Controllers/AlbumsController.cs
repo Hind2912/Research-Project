@@ -154,6 +154,13 @@ namespace MusicBoxProj.Controllers
             {
                 vm.GenreIds = album.ListOfGenres.Select(a => a.GenreId).ToArray();
             }
+
+            if (album.ListOfSongs != null)
+            {
+                vm.SongIds = album.ListOfSongs.Select(ab => ab.SongId).ToArray();
+            }
+
+
             vm.BandSelectList = new SelectList(_context.Bands, "BandId", "BandName");
             vm.GenreSelectList = new MultiSelectList(_context.Genres, "GenreId", "GenreName");
             vm.SongSelectList = new MultiSelectList(_context.Songs, "SongId", "SongName");
@@ -179,7 +186,10 @@ namespace MusicBoxProj.Controllers
                     AlbumId = vm.AlbumId,
                     AlbumName = vm.AlbumName,
                     BandId = vm.BandId,
-                    ReleaseDate = vm.ReleaseDate
+                    ReleaseDate = vm.ReleaseDate,
+                    
+                    
+                   
                 };
                 try
                 {
@@ -201,6 +211,7 @@ namespace MusicBoxProj.Controllers
                         _context.AlbumGenre.AddRange(newAlbumGenre);
                         await _context.SaveChangesAsync();
                     }
+               
                 }
                 catch (DbUpdateConcurrencyException)
                 {
