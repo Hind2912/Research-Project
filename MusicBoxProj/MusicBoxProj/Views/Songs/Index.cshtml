@@ -32,6 +32,12 @@
             <th>
                 Song Names
             </th>
+            <th>
+        Band Name
+            </th>
+            <th>
+        Album Name
+    </th>
             <th></th>
         </tr>
     </thead>
@@ -41,6 +47,12 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.SongName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Band.BandName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Album.AlbumName)
                 </td>
                 <td>
                     @{

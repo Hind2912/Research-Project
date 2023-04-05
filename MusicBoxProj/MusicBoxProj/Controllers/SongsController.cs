@@ -35,7 +35,8 @@ namespace MusicBoxProj.Controllers
                 return NotFound();
             }
 
-            var Songs = from s in _context.Songs select s;
+            var Songs = from s in _context.Songs.Include(s => s.Album).ThenInclude(a => a.Band)
+                        select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                 Songs = Songs.Where(ss => ss.SongName!.Contains(searchString) || ss.SongName.Contains(searchString));
