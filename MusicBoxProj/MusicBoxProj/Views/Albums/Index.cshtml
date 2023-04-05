@@ -31,6 +31,9 @@
             <th>
                 Band Name
             </th>
+            <th>
+                First Song/Album Cover
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -46,6 +49,16 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.BandId)
+                </td>
+                <td>
+                    @if (item.ListOfSongs.Any())
+                    {
+                        var firstSong = item.ListOfSongs.First();
+                        var ytUrl = firstSong.SongFilePath;
+                        var ytedit = ytUrl.Replace("/watch?v=", "/embed/");
+
+                        <iframe width="200" height="100" src=@ytedit frameborder="0" allowfullscreen></iframe>
+                    }
                 </td>
                 <td>
                     <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.AlbumId">Edit</a> |

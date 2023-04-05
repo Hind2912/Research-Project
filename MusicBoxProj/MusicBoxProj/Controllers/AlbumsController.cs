@@ -30,11 +30,16 @@ namespace MusicBoxProj.Controllers
                 return NotFound();
             }
 
-            var album = from a in _context.Albums select a;
+            var album = from a in _context.Albums.Include(a => a.ListOfSongs) select a;
+
+
+
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 album = album.Where(aa => aa.AlbumName!.Contains(searchString) || aa.AlbumName.Contains(searchString));
             }
+
 
             return View(await album.ToListAsync());
         }
