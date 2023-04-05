@@ -121,7 +121,7 @@ namespace MusicBoxProj.Controllers
           
 
             var song = await _context.Songs
-                .Include(s=>s.ListOfPlayLists)
+                //.Include(s=>s.ListOfPlayLists)
                 .FirstOrDefaultAsync(s => s.SongId == id);
             if (song == null)
             {
@@ -135,11 +135,11 @@ namespace MusicBoxProj.Controllers
             vm.SongDuration= song.SongDuration;
             vm.SongFilePath= song.SongFilePath;
 
-            if(song.ListOfPlayLists != null)
+            if (song.ListOfPlayLists != null)
             {
                 vm.PlayListIDs = song.ListOfPlayLists.Select(sg => sg.PlayListId).ToArray();
             }
-           vm.AlbumSelectList  = new SelectList(_context.Albums, "AlbumId", "AlbumName");
+            vm.AlbumSelectList  = new SelectList(_context.Albums, "AlbumId", "AlbumName");
            vm.BandSelectList  = new SelectList(_context.Bands, "BandId", "BandName");
             return View(vm);
 

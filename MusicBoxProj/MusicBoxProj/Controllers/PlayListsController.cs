@@ -86,7 +86,7 @@ namespace MusicBoxProj.Controllers
                 {
                     PlayListName= vm.PlayListName,
                     PlayListId= vm.PlayListId,
-                    ListOfSongs= vm.ListOfSongs,
+                    //ListOfSongs= vm.ListOfSongs,
                     
                 };
                 _context.Add(playList);
