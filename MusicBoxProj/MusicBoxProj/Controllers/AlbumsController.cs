@@ -30,8 +30,7 @@ namespace MusicBoxProj.Controllers
                 return NotFound();
             }
 
-            var album = from a in _context.Albums.Include(a => a.ListOfSongs) select a;
-
+            var album = from a in _context.Albums.Include(a => a.ListOfSongs).Include(a => a.Band) select a;
 
 
 
