@@ -23,23 +23,24 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.BandName)
+                Band Name
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.BandName)
-            </td>
-            <td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BandName)
+                </td>
+                <td>
                     <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.BandId">Edit</a> |
                     <a class="btn btn-info" asp-action="Details" asp-route-id="@item.BandId">Details</a> |
                     <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.BandId">Delete</a>
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

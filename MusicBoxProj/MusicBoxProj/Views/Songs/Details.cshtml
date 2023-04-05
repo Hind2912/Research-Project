@@ -10,39 +10,38 @@
     <h4>Song</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SongName)
+        <dt class="col-sm-2">
+            Song Name
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.SongName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Album)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Album.AlbumName)
+        <dd class="col-sm-10">
+            <a href="/Albums/Details/@Model.Album.AlbumId">@Html.DisplayFor(model => model.Album.AlbumName)</a>
+
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Band)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Band.BandName)
+        <dd class="col-sm-10">
+            <a href="/Bands/Details/@Model.Band.BandId">@Html.DisplayFor(model => model.Band.BandName)</a>
+
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SongDuration)
+        <dt class="col-sm-2">
+            Youtube URL
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SongDuration)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SongFilePath)
-        </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
+            <a href="@Html.DisplayFor(model => model.SongFilePath)" @Html.DisplayFor(model => model.SongFilePath)
+</a>
+
             @Html.DisplayFor(model => model.SongFilePath)
         </dd>
     </dl>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.SongId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Go to the Songs page</a>
 </div>

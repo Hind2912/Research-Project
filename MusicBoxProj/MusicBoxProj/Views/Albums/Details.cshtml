@@ -10,50 +10,52 @@
     <h4>Album</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AlbumName)
+        <dt class="col-sm-2">
+            Album Name
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AlbumName)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ReleaseDate)
+        <dt class="col-sm-2">
+            Release Date
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ReleaseDate)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Band)
+        <dt class="col-sm-2">
+            Band Name
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             <a href="/Bands/Details/@Model.Band.BandId">@Html.DisplayFor(model => model.Band.BandName)</a>
-            
+
         </dd>
     </dl>
     <h5>List of Genres: </h5>
     <ul class="row">
         @foreach (var g in Model.Genres)
         {
-               <li>@g.GenreName</li> 
+            <li>
+                <a href="/Genres/Details/@g.GenreId">@g.GenreName</a>
+            </li>
         }
 
     </ul>
 
     <h5>List of Songs: </h5>
-   
+
     <ul class="row">
 
         @foreach (var s in Model.Songs)
         {
 
 
-                        var ytUrl = s.SongFilePath;
-                        var ytedit = ytUrl.Replace("/watch?v=", "/embed/");
+            var ytUrl = s.SongFilePath;
+            var ytedit = ytUrl.Replace("/watch?v=", "/embed/");
 
 
             <li>
                 <a href="/Songs/Details/@s.SongId">@s.SongName</a>
-                 <br>
+                <br>
                 <iframe width="200" height="100" src=@ytedit frameborder="0" allowfullscreen></iframe>
             </li>
 
@@ -63,5 +65,5 @@
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.AlbumId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Go to the Albums page</a>
 </div>

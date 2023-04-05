@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="BandId" />
             <div class="form-group">
-                <label asp-for="BandName" class="control-label"></label>
+                <label asp-for="BandName" class="control-label">Band Name</label>
                 <input asp-for="BandName" class="form-control" />
                 <span asp-validation-for="BandName" class="text-danger"></span>
             </div>
@@ -30,5 +30,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
