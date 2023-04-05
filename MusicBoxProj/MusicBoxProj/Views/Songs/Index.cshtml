@@ -49,10 +49,11 @@
                     @Html.DisplayFor(modelItem => item.SongName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Band.BandName)
+                    <a href="/Bands/Details/@item.Band.BandId">@Html.DisplayFor(modelItem => item.Band.BandName)</a>
+
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Album.AlbumName)
+                    <a href="/Albums/Details/@item.Album.AlbumId">@Html.DisplayFor(modelItem => item.Album.AlbumName)</a>
                 </td>
                 <td>
                     @{
