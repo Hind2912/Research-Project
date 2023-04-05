@@ -239,5 +239,21 @@ namespace MusicBoxProj.Controllers
         {
           return _context.Songs.Any(e => e.SongId == id);
         }
+
+        public IActionResult RandomSong()
+        {
+            // Get all the song IDs from the database
+            var songIds = _context.Songs.Select(s => s.SongId).ToList();
+
+            // Generate a random index within the range of the song IDs
+            var randomIndex = new Random().Next(0, songIds.Count);
+
+            // Get the song ID at the random index
+            var randomSongId = songIds[randomIndex];
+
+            // Redirect to the Song/Details/Id page for the randomly selected song
+            return RedirectToAction("Details", "Songs", new { id = randomSongId });
+        }
+
     }
 }
