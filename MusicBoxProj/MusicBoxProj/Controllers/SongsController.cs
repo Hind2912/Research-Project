@@ -35,24 +35,12 @@ namespace MusicBoxProj.Controllers
                 return NotFound();
             }
 
-            var Songs = from s in _context.Songs.Include(s => s.Album).ThenInclude(a => a.Band)
+            var Songs = from s in _context.Songs.Include(s => s.Album).Include(s => s.Band)
                         select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                 Songs = Songs.Where(ss => ss.SongName!.Contains(searchString) || ss.SongName.Contains(searchString));
             }
-            //var applicationDbContext = _context.Songs.Include(s => s.Album).Include(s => s.Band);
-            const string input = "http://www.youtube.com/watch?v=bSiDLCf5u3s " +
-            "https://www.youtube.com/watch?v=bSiDLCf5u3s " +
-            "http://youtu.be/bSiDLCf5u3s " +
-            "www.youtube.com/watch?v=bSiDLCf5u3s " +
-            "youtu.be/bSiDLCf5u3s " +
-            "http://www.youtube.com/watch?feature=player_embedded&v=bSiDLCf5u3s " +
-            "www.youtube.com/watch?feature=player_embedded&v=bSiDLCf5u3s " +
-            "http://www.youtube.com/watch?v=_-QpUDvTdNY";
-            const string pattern = @"(?:https?:\/\/)?(?:www\.)?(?:(?:(?:youtube.com\/watch\?[^?]*v=|youtu.be\/)([\w\-]+))(?:[^\s?]+)?)";
-            const string replacement = "<iframe title='YouTube video player' width='480' height='390' src='http://www.youtube.com/embed/$1' frameborder='0' allowfullscreen='1'></iframe>";
-            var rgx = new Regex(pattern);
 
             return View(await Songs.ToListAsync());
         }

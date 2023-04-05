@@ -154,6 +154,8 @@ namespace MusicBoxProj.Controllers
             vm.AlbumName = album.AlbumName;
             vm.BandId = album.BandId;
             vm.ReleaseDate = album.ReleaseDate;
+            vm.GenreIds = album.ListOfGenres?.Select(g => g.GenreId).ToArray();
+            vm.SongIds = album.ListOfSongs?.Select(s => s.SongId).ToArray();
 
             var albums = _context.Albums.Find(id);
 
