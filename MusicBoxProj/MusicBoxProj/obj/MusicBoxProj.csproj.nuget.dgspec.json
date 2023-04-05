@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Semester 4\\CP 440 Major Project\\March 30-2023\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {}
+    "C:\\aaaa\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {}
   },
   "projects": {
-    "D:\\Semester 4\\CP 440 Major Project\\March 30-2023\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {
+    "C:\\aaaa\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Semester 4\\CP 440 Major Project\\March 30-2023\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+        "projectUniqueName": "C:\\aaaa\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
         "projectName": "MusicBoxProj",
-        "projectPath": "D:\\Semester 4\\CP 440 Major Project\\March 30-2023\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
-        "packagesPath": "C:\\Users\\hinda\\.nuget\\packages\\",
-        "outputPath": "D:\\Semester 4\\CP 440 Major Project\\March 30-2023\\Major-Project\\MusicBoxProj\\MusicBoxProj\\obj\\",
+        "projectPath": "C:\\aaaa\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+        "packagesPath": "C:\\Users\\brayd\\.nuget\\packages\\",
+        "outputPath": "C:\\aaaa\\Major-Project\\MusicBoxProj\\MusicBoxProj\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hinda\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\brayd\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -90,7 +90,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
