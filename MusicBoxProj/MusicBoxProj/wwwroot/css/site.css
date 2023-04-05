@@ -40,3 +40,12 @@ body {
         color: white;
         
     }
+
+    .darkLight div nav.navbar {
+        background-color: black;
+    }
+
+        .darkLight div nav.navbar input {
+            background-color: dimgray;
+        }
+       
