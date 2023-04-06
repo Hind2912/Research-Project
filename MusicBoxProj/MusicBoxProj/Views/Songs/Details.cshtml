@@ -1,4 +1,6 @@
 ﻿@model MusicBoxProj.Models.Song
+@using System.Text.RegularExpressions;
+
 
 @{
     ViewData["Title"] = "Details";
@@ -38,6 +40,23 @@
 </a>
 
             @Html.DisplayFor(model => model.SongFilePath)
+        </dd>
+        <dd class="col-sm-10">
+            @{
+
+                var ytUrl = Model.SongFilePath;
+
+                var regex = new Regex(@"(?:youtu\.be\/|youtube\.com\/(?:watch\?.*v=|embed\/))([\w-]+)");
+
+                var match = regex.Match(ytUrl);
+
+                var videoId = match.Groups[1].Value;
+
+                var ytedit = $"https://www.youtube.com/embed/{videoId}";
+                <iframe width="500" height="280" src="@ytedit" frameborder="0" allowfullscreen></iframe>
+
+
+            }
         </dd>
     </dl>
 </div>
