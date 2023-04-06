@@ -240,13 +240,16 @@ namespace MusicBoxProj.Controllers
           return _context.Songs.Any(e => e.SongId == id);
         }
 
+
+        //This controls the random song stuff.
         public IActionResult RandomSong()
         {
+            //Getting song ids
             var songIds = _context.Songs.Select(s => s.SongId).ToList();
-
+            //getting a random song id
             var randomIndex = new Random().Next(0, songIds.Count);
-
             var randomSongId = songIds[randomIndex];
+            //sending you to Songs/Details/RandomID
             return RedirectToAction("Details", "Songs", new { id = randomSongId });
         }
 

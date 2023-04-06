@@ -57,11 +57,11 @@
 
             var ytedit = $"https://www.youtube.com/embed/{videoId}";
 
-            <li>
+            <div class="col-md-4">                
                 <a href="/Songs/Details/@s.SongId">@s.SongName</a>
                 <br>
-                <iframe width="200" height="100" src=@ytedit frameborder="0" allowfullscreen></iframe>
-            </li>
+                <iframe width="300" height="200" src=@ytedit frameborder="0" allowfullscreen></iframe>
+            </div>
         }
 
     </ul>

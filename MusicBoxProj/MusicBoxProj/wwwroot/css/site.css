@@ -32,11 +32,16 @@ body {
     background-color: dimgray;
 }
 
+.light div nav.navbar input {
+    background-color: dimgray;
+}
+
 .darkLight {
     background-color:black;
     color: white;
    
 }
+
 
 .darkLight table {
     background-color: black;

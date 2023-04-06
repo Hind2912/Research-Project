@@ -39,7 +39,7 @@
             <a href=@Html.DisplayFor(model => model.SongFilePath)>@Html.DisplayFor(model => model.SongFilePath)</a>
 
         </dd>
-        <dd class="col-sm-10">
+        <dd class="col-sm-12">
             @{
 
                 var ytUrl = Model.SongFilePath;
@@ -50,11 +50,16 @@
 
                 var videoId = match.Groups[1].Value;
 
-                var ytedit = $"https://www.youtube.com/embed/{videoId}";
-                <iframe width="500" height="280" src="@ytedit" frameborder="0" allowfullscreen></iframe>
-
-
             }
+            <div id="ytplayer"></div>
+            <div>
+                <input type="checkbox" id="shuffleCheckbox" name="shuffleCheckbox">
+                <label for="shuffleCheckbox">Shuffle//Will take you to a random song when this one finishes</label>
+            </div>
+            <div>
+                <input type="checkbox" id="bigPlayerCheckbox" name="bigPlayerCheckbox">
+                <label for="bigPlayerCheckbox">Theatre Mode// Make the video really big</label>
+            </div>
         </dd>
     </dl>
 </div>
@@ -62,3 +67,64 @@
     <a asp-action="Edit" asp-route-id="@Model?.SongId">Edit</a> |
     <a asp-action="Index">Go to the Songs page</a>
 </div>
+
+@section scripts{
+    <script src="https://www.youtube.com/player_api"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        var player;
+        var shuffleChecked = false;
+        var bigPlayerChecked = false;
+
+        function onYouTubePlayerAPIReady() {
+            //default stuff for the video
+            player = new YT.Player('ytplayer', {
+                height: '280',
+                width: '500',
+                videoId: '@videoId',
+                events: {
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        //Listening
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.ENDED && shuffleChecked) {
+                window.location.href = '@Url.Action("RandomSong", "Songs")';
+            }
+        }
+
+        function onTheatreModeChange() {
+            //changes size
+            var height = bigPlayerChecked ? '680' : '280';
+            var width = bigPlayerChecked ? '1280' : '500';
+            player.setSize(width, height);
+            //Hides other stuff
+            if (bigPlayerChecked) {
+                $("dt.col-sm-2").hide();
+                $("dd.col-sm-10").hide();
+            } else {
+                $("dt.col-sm-2").show();
+                $("dd.col-sm-10").show();
+            }
+        }
+
+        //CheckBoxes
+
+
+        $(document).ready(function () {
+            $("#shuffleCheckbox").click(function () {
+                shuffleChecked = $(this).prop("checked");
+            });
+        });
+
+        $("#bigPlayerCheckbox").click(function () {
+            bigPlayerChecked = $(this).prop("checked");
+            onTheatreModeChange();
+        });
+
+
+
+    </script>
+}

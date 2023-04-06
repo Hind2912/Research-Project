@@ -8,11 +8,11 @@ function changeLight() {
     var splitSource = source.split("/");
     var lightImg = splitSource[4];
     if (lightImg == "light.png") {
-        //config pour dark mode
+        //config for dark mode
         document.getElementById("light").src = "/images/dark.png";
         document.body.classList.toggle("darkLight");
     } else {
-        //config pour light mode
+        //config for light mode
         document.getElementById("light").src = "/images/light.png";
         document.body.classList.toggle("darkLight");
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ab\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {}
+    "C:\\aaaa\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {}
   },
   "projects": {
-    "C:\\ab\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {
+    "C:\\aaaa\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ab\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+        "projectUniqueName": "C:\\aaaa\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
         "projectName": "MusicBoxProj",
-        "projectPath": "C:\\ab\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
+        "projectPath": "C:\\aaaa\\Major-Project\\MusicBoxProj\\MusicBoxProj\\MusicBoxProj.csproj",
         "packagesPath": "C:\\Users\\brayd\\.nuget\\packages\\",
-        "outputPath": "C:\\ab\\Major-Project\\MusicBoxProj\\MusicBoxProj\\obj\\",
+        "outputPath": "C:\\aaaa\\Major-Project\\MusicBoxProj\\MusicBoxProj\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\brayd\\AppData\\Roaming\\NuGet\\NuGet.Config",
