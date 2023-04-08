@@ -1,4 +1,4 @@
-﻿@model MusicBoxProj.Models.Genre
+﻿@model MusicBoxProj.ViewModel.GenreDetailsVM
 
 @{
     ViewData["Title"] = "Details";
@@ -17,6 +17,16 @@
             @Html.DisplayFor(model => model.GenreName)
         </dd>
     </dl>
+     <h4>Albums</h4>
+    <ul class="row">
+        @foreach (var g in Model.Albums)
+        {
+            <li>
+                <a href="/Albums/Details/@g.AlbumId">@g.AlbumName</a>
+            </li>
+        }
+
+    </ul>
 
 </div>
 <div>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MusicBoxProj.Data;
 using MusicBoxProj.Models;
+using MusicBoxProj.ViewModel;
 
 namespace MusicBoxProj.Controllers
 {
@@ -42,15 +43,27 @@ namespace MusicBoxProj.Controllers
             {
                 return NotFound();
             }
-
+           GenreDetailsVM vm = new GenreDetailsVM();
             var genre = await _context.Genres
+                .Include(g => g.ListOfAlbums)
+                .ThenInclude(g => g.Album)
                 .FirstOrDefaultAsync(m => m.GenreId == id);
             if (genre == null)
             {
                 return NotFound();
             }
 
-            return View(genre);
+            
+            vm.GenreId = genre.GenreId;
+            vm.GenreName = genre.GenreName;
+
+            foreach (var AlbumGenre in genre.ListOfAlbums)
+            {
+                vm.Albums.Add(AlbumGenre.Album);
+            }
+
+
+            return View(vm);
         }
 
         // GET: Genres/Create
