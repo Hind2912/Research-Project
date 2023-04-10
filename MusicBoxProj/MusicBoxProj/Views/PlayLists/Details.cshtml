@@ -1,4 +1,5 @@
 ﻿@model MusicBoxProj.ViewModel.PlayListDetailsVM
+@using System.Text.RegularExpressions;
 
 @{
     ViewData["Title"] = "Details";
@@ -16,21 +17,44 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PlayListName)
         </dd>
-        <dt class="col-sm-2">
+       @* <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.SongFilePath)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.SongFilePath)
-        </dd>
+        </dd>*@
     </dl>
     
-    <h5>List of Songs: </h5>
+   @* <h5>List of Songs: </h5>
 
     <ul class="row">
         @foreach (var s in Model.Songs)
         {
             <li>@s.SongName</li>
 
+        }
+
+    </ul>
+*@
+<h4>Songs</h4>
+    <ul class="row">
+
+        @foreach (var s in Model.Songs)
+        {
+            var ytUrl = s.SongFilePath;
+            var regex = new Regex(@"(?:youtu\.be\/|youtube\.com\/(?:watch\?.*v=|embed\/))([\w-]+)");
+
+            var match = regex.Match(ytUrl);
+
+            var videoId = match.Groups[1].Value;
+
+            var ytedit = $"https://www.youtube.com/embed/{videoId}";
+
+            <div class="col-md-4 text-center">
+                <a href="/Songs/Details/@s.SongId">@s.SongName</a>
+                <br>
+                <iframe width="300" height="200" src=@ytedit frameborder="0" allowfullscreen></iframe>
+            </div>
         }
 
     </ul>

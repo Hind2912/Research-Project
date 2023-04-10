@@ -40,22 +40,23 @@ namespace MusicBoxProj.Controllers
         // GET: PlayLists/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.playLists == null)
+            if (id == null || _context.PlayList == null)
             {
                 return NotFound();
             }
             PlayListDetailsVM vm = new PlayListDetailsVM();
-            var playList = await _context.playLists
+            var playList = await _context.PlayList
                 .Include(p => p.ListOfSongs)
+                .ThenInclude(p => p.Song)
                 .FirstOrDefaultAsync(m => m.PlayListId == id);
-            
+
             if (playList == null)
             {
                 return NotFound();
             }
             vm.PlayListId = playList.PlayListId;
             vm.PlayListName = playList.PlayListName;
-           
+
 
 
             foreach (var SongList in playList.ListOfSongs)
@@ -78,21 +79,35 @@ namespace MusicBoxProj.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create( PlayListCreateVM vm)
+        public async Task<IActionResult> Create(PlayListCreateVM vm)
         {
             if (ModelState.IsValid)
             {
                 PlayList playList = new PlayList()
                 {
-                    PlayListName= vm.PlayListName,
-                    PlayListId= vm.PlayListId,
-                    //ListOfSongs= vm.ListOfSongs,
-                    
+                    PlayListName = vm.PlayListName,
                 };
-                _context.Add(playList);
+
+                await _context.PlayList.AddAsync(playList);
                 await _context.SaveChangesAsync();
+
+                List<PlayListSong> listOfSongs = new List<PlayListSong>();
+
+                foreach (int songID in vm.SelectedSongIDs)
+                {
+                    listOfSongs.Add(new PlayListSong()
+                    {
+                        PlayListId = playList.PlayListId,
+                        SongId = songID
+                    });
+                }
+
+                await _context.PlayListSong.AddRangeAsync(listOfSongs);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             vm.SongSelectList = new MultiSelectList(_context.Songs, "SongId", "SongName");
             return View(vm);
         }
@@ -100,14 +115,14 @@ namespace MusicBoxProj.Controllers
         // GET: PlayLists/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.playLists == null)
+            if (id == null || _context.PlayList == null)
             {
                 return NotFound();
             }
 
-            var playList = await _context.playLists
+            var playList = await _context.PlayList
                 .Include(p => p.ListOfSongs)
-                .FirstOrDefaultAsync(p =>p.PlayListId ==id);
+                .FirstOrDefaultAsync(p => p.PlayListId == id);
             if (playList == null)
             {
                 return NotFound();
@@ -165,12 +180,12 @@ namespace MusicBoxProj.Controllers
         // GET: PlayLists/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.playLists == null)
+            if (id == null || _context.PlayList == null)
             {
                 return NotFound();
             }
 
-            var playList = await _context.playLists
+            var playList = await _context.PlayList
                 .FirstOrDefaultAsync(m => m.PlayListId == id);
             if (playList == null)
             {
@@ -185,23 +200,23 @@ namespace MusicBoxProj.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.playLists == null)
+            if (_context.PlayList == null)
             {
                 return Problem("Entity set 'ApplicationDbContext.playLists'  is null.");
             }
-            var playList = await _context.playLists.FindAsync(id);
+            var playList = await _context.PlayList.FindAsync(id);
             if (playList != null)
             {
-                _context.playLists.Remove(playList);
+                _context.PlayList.Remove(playList);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool PlayListExists(int id)
         {
-          return _context.playLists.Any(e => e.PlayListId == id);
+            return _context.PlayList.Any(e => e.PlayListId == id);
         }
     }
 }

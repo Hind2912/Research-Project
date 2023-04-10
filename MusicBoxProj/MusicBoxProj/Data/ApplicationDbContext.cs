@@ -25,6 +25,7 @@ namespace MusicBoxProj.Data
         public DbSet<MusicBoxProj.Models.Song> Songs { get; set; }
         public DbSet<MusicBoxProj.Models.PlayList> playLists  { get; set; }
 
+        public DbSet<MusicBoxProj.Models.PlayListSong> PlayListSong { get; set; }
         public DbSet<AlbumGenre> AlbumGenre { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
